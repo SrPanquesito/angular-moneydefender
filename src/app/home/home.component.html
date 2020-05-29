@@ -1,0 +1,28 @@
+<div class="reddit-body">
+    <div class="container">
+      <div class="row">
+        <hr />
+        <div class="col-md-9">
+          <!-- Display Posts-->
+          <div class="row post" *ngFor="let course of courses$">
+            <!-- Section to Display Post Information-->
+            <div class="col-md-12">
+              <div class="post-title">
+                <!-- <a class="postname" href="{{course.url}}">{{course.courseName}}</a> -->
+                <a class="postname">{{course.courseName}}</a>
+              </div>
+              <div>
+                <p class="post-text">{{course.description}}</p>
+              </div>
+              <hr />
+              <span class="subreddit-info">
+                <span> Created: {{course.createdDate}}</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+        </div>
+      </div>
+    </div>
+  </div>
