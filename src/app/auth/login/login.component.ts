@@ -27,8 +27,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      username: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
+      username_l: new FormControl('', Validators.required),
+      password_l: new FormControl('', Validators.required),
     });
 
     this.activatedRoute.queryParams
@@ -42,8 +42,8 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.loginRequestPayload.username = this.loginForm.get('username').value;
-    this.loginRequestPayload.password = this.loginForm.get('password').value;
+    this.loginRequestPayload.username = this.loginForm.get('username_l').value;
+    this.loginRequestPayload.password = this.loginForm.get('password_l').value;
 
     this.authService.login(this.loginRequestPayload).subscribe(data => {
       this.isError = false;
