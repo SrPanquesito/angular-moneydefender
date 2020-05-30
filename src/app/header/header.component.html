@@ -12,12 +12,12 @@
                         <img class="account-icon" src="https://www.redditstatic.com/avatars/avatar_default_08_D4E815.png">
                         {{username}}
                     </button>
-                    <button class="logout" (click)="logout()">Logout</button>
+                    <button class="logout" (click)="logout()">Cerrar Sesión</button>
                 </div>
             </div>            
             <div *ngIf="!isLoggedIn">
-                <a routerLink="/signup" class="float-right sign-up mr-2">Sign up</a>
-                <a routerLink="/login" class="float-right login mr-2">Login</a>
+                <a routerLink="/signup" class="float-right sign-up mr-2">Regístrate</a>
+                <a routerLink="/login" class="float-right login mr-2">Inicia Sesión</a>
             </div>
         </div>
     </nav>

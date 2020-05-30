@@ -42,7 +42,7 @@ export class SignupComponent implements OnInit {
           { queryParams: { registered: 'true' } }
         );
       }, () => {
-        this.toastr.error('Registration Failed! Please try again');
+        this.toastr.error('Registro Falló! Por favor, intenta nuevamente.');
       });
   }
 

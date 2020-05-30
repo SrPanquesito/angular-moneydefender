@@ -3,38 +3,38 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header" style="text-align: center"><h4>Login</h4></div>
+                <div class="card-header" style="text-align: center"><h4>Inicia Sesión</h4></div>
                 <div class="card-body">
                     <form [formGroup]="loginForm" (ngSubmit)="login()">
                         <div class="form-group row">
-                            <label for="user_name" class="col-md-4 col-form-label text-md-right">Username</label>
+                            <label for="user_name" class="col-md-4 col-form-label text-md-right">Usuario</label>
                             <div class="col-md-6">
                                 <input type="text" id="user_name_login" class="form-control" [formControlName]="'username_l'" name="user_name" required
                                     autofocus>
                                 <span *ngIf="!loginForm.get('username_l').valid && loginForm.get('username_l').touched">
-                                   Please provide a valid username
+                                   Favor de ingresar un usuario válido.
                                 </span>                                    
                             </div>
                         </div>
  
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">Contraseña</label>
                             <div class="col-md-6">
                                 <input type="password" id="password_login" class="form-control" [formControlName]="'password_l'" name="password_l" required>
                                 <span *ngIf="!loginForm.get('password_l').valid && loginForm.get('password_l').touched">
-                                  Password cannot be empty
+                                  La contraseña no puede estar vacía.
                                 </span>                                
                             </div>
                         </div>
  
                         <span class="col-md-6 offset-md-4">
                             <button type="submit" class="login">
-                                Login
+                                Inicia sesión
                             </button>
-                            <span style="padding-left: 15px">New User? <a routerLink="/signup">Sign Up</a></span>
+                            <span style="padding-left: 15px">¿Nuevo en MoneyDefender? <a routerLink="/signup">Regístrate</a></span>
                         </span>   
                         <div class="login-failed" *ngIf='this.isError'>
-                             <p class="login-failed-text">Login Failed. Please check your credentials and try again.</p>   
+                             <p class="login-failed-text">Inicio de sesión falló. Por favor, revisa tus credenciales e intenta nuevamente.</p>   
                         </div>
                         <div class="login-failed" [ngStyle]="{'background-color': 'green'}" *ngIf="this.registerSuccessMessage !== undefined && this.registerSuccessMessage.length > 0">
                             <p class="register-success-text">{{registerSuccessMessage}}</p>   

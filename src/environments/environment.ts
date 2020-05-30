@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'http://localhost:9000'
+  api: 'https://moneydefender.herokuapp.com'
 };
 
 /*

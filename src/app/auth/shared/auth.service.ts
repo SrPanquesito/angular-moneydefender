@@ -24,11 +24,11 @@ export class AuthService {
   constructor(private http: HttpClient, private localStorage: LocalStorageService) { }
 
   signup(signupRequestPayload: SignupRequestPayload) : Observable<any> {
-    return this.http.post('http://localhost:9000/api/auth/signup', signupRequestPayload, {responseType: 'text'});
+    return this.http.post(environment.api + '/api/auth/signup', signupRequestPayload, {responseType: 'text'});
   }
 
   login(loginRequestPayload: LoginRequestPayload): Observable<boolean> {
-    return this.http.post<LoginResponse>('http://localhost:9000/api/auth/login', loginRequestPayload)
+    return this.http.post<LoginResponse>(environment.api + '/api/auth/login', loginRequestPayload)
       .pipe(map(data => {
         this.localStorage.store('authenticationToken', data.authenticationToken);
         this.localStorage.store('username', data.username);
