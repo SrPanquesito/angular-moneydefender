@@ -1,22 +1,36 @@
-<div class="reddit-body">
+<div class="courses-body">
     <div class="container">
       <div class="row">
         <hr />
+        <div class="row welcome">
+          <div class="col-md-6">
+            <img src="assets/moneydefender-3.png" alt="">
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex flex-column">
+              <div style="margin-top: 4rem;">
+                <h1>Bienvenido de vuelta {{user}}!</h1>
+                <h4>Tienes nuevos cursos disponibles ↓</h4>
+                <div  style="width: 70%;" class="progress">
+                  <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="col-md-9">
-          <!-- Display Posts-->
-          <div class="row post" *ngFor="let course of courses$">
-            <!-- Section to Display Post Information-->
+          <!-- Display Courses-->
+          <div class="row course" *ngFor="let course of courses$">
             <div class="col-md-12">
-              <div class="post-title">
-                <!-- <a class="postname" href="{{course.url}}">{{course.courseName}}</a> -->
-                <a class="postname">{{course.courseName}}</a>
+              <div class="course-title">
+                <a class="coursename" [routerLink]="['/course']" [queryParams]="{id: course.courseId}">{{course.courseName}}</a>
               </div>
               <div>
-                <p class="post-text">{{course.description}}</p>
+                <p class="course-text">{{course.description}}</p>
               </div>
               <hr />
-              <span class="subreddit-info">
-                <span> Created: {{course.createdDate}}</span>
+              <span class="course-info">
+                <span> Creado: {{course.createdDate | date: 'medium' }}</span>
               </span>
             </div>
           </div>

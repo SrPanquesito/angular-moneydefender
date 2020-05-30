@@ -1,0 +1,24 @@
+<div class="course-body">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="course-info" *ngIf="course$ !== undefined">
+                    <h2>{{course$.courseName}}</h2>
+                    <p>{{course$.description}}</p>
+                </div>
+                <hr/>
+                <br/>
+                <h5><i>Lecciones:</i></h5>
+                <!-- Display each lesson of the course -->
+                <div class="row lesson" *ngFor="let lesson of lessons$; let i = index">
+                    <div class="col-md-12">
+                        <div class="lesson-title">
+                        <a class="lesson-name" [routerLink]="['/lesson']" [queryParams]="{id: lesson.lessonId}">{{i+1}}. {{lesson.lessonName}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</div>

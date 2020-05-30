@@ -14,4 +14,8 @@ export class CourseService {
   getAllCourses(): Observable<Array<CourseModel>> {
     return this.http.get<Array<CourseModel>>(environment.api + '/api/course');
   }
+
+  getCourse(id): Observable<CourseModel> {
+    return this.http.get<CourseModel>(environment.api + '/api/course/' + id);
+  }
 }

@@ -16,7 +16,7 @@ header{
     text-decoration: none;
 }
 
-.login, .sign-up{    
+.login, .sign-up, .logout{    
     background-color: transparent;
     border-color: #0079D3;
     color: #0079D3;
@@ -46,6 +46,7 @@ header{
 } 
 
 .userdetails{    
+    display: inline;
     background-color: transparent;
     border-color: #0079D3;
     color: #0079D3;
@@ -69,26 +70,9 @@ header{
     }
 }
 
-
-.dropdown-item{
-    background-color: #f8f9fa;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 18px;
-    display: inline-block;
-    vertical-align: middle;
-    &:hover{
-        background-color: #0079D3;
-    }
-}
-
-.dropdown-menu{
-    background-color: #f8f9fa;
-}
-
 .account-icon{
+    display: inline;
     border-radius: 4px;
-    float: left;
     margin-right: 5px;
     max-height: 24px;
     max-width: 24px;

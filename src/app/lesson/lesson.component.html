@@ -1,0 +1,39 @@
+<div class="lesson-body">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="lesson-info" *ngIf="lesson$ !== undefined">
+                    <div>
+                        <a class="lesson-name" [routerLink]="['/course']" [queryParams]="{id: lesson$.courseId}"><< Regresar</a>
+                    </div>
+                    <h2>{{lesson$.lessonName}}</h2>
+                    <p>{{lesson$.content}}</p>
+                    <p>Fecha de creación: {{lesson$.createdDate | date: 'medium'}}</p>
+                </div>
+                <hr/>
+                <div *ngIf="questionary$ !== undefined">
+                    <button class="questionary-button btn btn-outline-primary btn-lg btn-block" (click)="isOpen = !isOpen">
+                        Ver Evaluación ↓
+                    </button>
+                    <div class="questionary-box" [@openClose]="isOpen ? 'open' : 'closed'">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12 questionary-info" *ngIf="answers$ !== undefined">
+                                    <h4>{{questionary$.question}}</h4>
+                                    <div *ngFor="let answer of answers$">
+                                        <label for="enum_answer_{{answer.id}}">
+                                            <input type="radio" id="enum_answer_{{answer.id}}" [name]="answer.id" [value]="answer.id" [(ngModel)]="radioSelected">
+                                            {{answer.text}}
+                                        </label>
+                                    </div>
+                                    <button (click)="submitAnswer()" type="button" class="btn btn-success float-right">Aceptar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</div>

@@ -1,9 +1,19 @@
-.reddit-body {
+.courses-body {
     margin-top: 5rem;
 }
 
-.post{
-    --post-line-color: #ccc;    
+.welcome {
+    img {
+        max-width: 100%;
+    }
+
+    h4 {
+        color: #666;
+    }
+}
+
+.course{
+    --course-line-color: #ccc;    
     border: 1px solid #ccc;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -13,6 +23,10 @@
     position: relative;
     border-radius: 4px;
     padding:5px;
+}
+
+.courses-available {
+    margin-bottom: 4rem;
 }
 
 .btnCommments{
@@ -26,20 +40,16 @@
     cursor: pointer;
 }
 
-.post-title{
+.course-title{
     font-size: 28px;
     font-weight: bold;
     opacity: 1;
 }
 
-.posturl, .postname{    
+.courseurl, .coursename{    
     color: black;
 }
 
-.subreddit-text{
-    font-weight: bold;
-}
-
-.post-text{
+.course-text{
     margin-top: 10px;
 }

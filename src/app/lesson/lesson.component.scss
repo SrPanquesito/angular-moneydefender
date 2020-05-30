@@ -1,0 +1,23 @@
+.lesson-body {
+    margin-top: 5rem;
+}
+
+.questionary-box {
+    border-left: 1px dashed #ccc;
+    border-right: 1px dashed #ccc;
+    border-bottom: 1px dashed #ccc;
+    margin-bottom: 10px;
+    overflow: hidden;
+    background-color: rgba(255,255,255,0.8);
+    position: relative;
+    border-radius: 4px;
+    padding:5px;
+}
+
+.questionary-info {
+    margin-top: 10px;
+
+    h4 {
+        padding-bottom: 1rem;
+    }
+}
