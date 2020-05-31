@@ -16,13 +16,13 @@
     <div class="post-comment">
         <form [formGroup]="commentForm" (ngSubmit)="postComment()">
             <div class="form-group">
-                <textarea class="form-control" [formControlName]="'text'" placeholder="Your Thoughts?"></textarea>
+                <textarea class="form-control" [formControlName]="'text'" placeholder="¿Qué opinas sobre esta lección?"></textarea>
             </div>
             <div>
                 <div class="comment-failed d-inline" *ngIf='this.isError'>
                     <p class="comment-failed-text d-inline ml-2 mb-0">Tu comentario está vacío.</p>   
                 </div>
-                <button type="submit" class="login float-right d-inline">Comment</button>
+                <button type="submit" class="login float-right d-inline">Comentar</button>
             </div>
         </form>
     </div>
