@@ -1,7 +1,7 @@
 <div class="lesson-body">
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <div class="lesson-info" *ngIf="lesson$ !== undefined">
                     <div>
                         <a class="lesson-name" [routerLink]="['/course']" [queryParams]="{id: lesson$.courseId}"><< Regresar</a>
@@ -34,8 +34,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <app-lesson-sidebar></app-lesson-sidebar>
+            <div class="col-md-4">
+                <app-lesson-sidebar [fromCourse]="lesson$.courseId" *ngIf="lesson$ !== undefined" [lessonId]="lesson$.lessonId"></app-lesson-sidebar>
             </div>
         </div>
     </div>

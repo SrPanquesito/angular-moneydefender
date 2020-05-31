@@ -58,7 +58,6 @@ export class LessonComponent implements OnInit {
             var myStr = questionary.answers.replace(/'/g,'"');
             var myArr = JSON.parse(myStr);
             this.answers$ = myArr;
-            console.log(this.answers$);
           });
         }
       });

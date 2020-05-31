@@ -1,11 +1,29 @@
 <div class="sidebar">
-    <div style="color: black; font-weight: bold">Browse Subreddits</div>
+    <button (click)="backToCourse()" type="button" class="btn btn-danger btn-block"><b>Regresar a Curso</b></button>
+    <div class="font-weight-bold text-body mt-4 m-2">Comentarios</div>
     <hr />
-    <span>
-        <span class="subreddit-text"><a href="/view-subreddit/">Algo</a></span>
-        <hr />
-    </span>
-    <div style="text-align: center">
-        <a style="font-weight: bold" routerLink="/list-subreddits">View All</a>
+    <div class="comment-box" #scrollChat>
+        <div class="comment" *ngFor="let comment of comments$">
+            <div class="comment-info">
+                <img class="account-icon" src="https://www.redditstatic.com/avatars/avatar_default_08_D4E815.png">
+                <b class="mr-1">{{comment.userName}}:</b>
+                <span>{{comment.text}}</span>
+                <i class="float-right mt-3">{{comment.createdDate | date: 'short'}}</i>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="post-comment">
+        <form [formGroup]="commentForm" (ngSubmit)="postComment()">
+            <div class="form-group">
+                <textarea class="form-control" [formControlName]="'text'" placeholder="Your Thoughts?"></textarea>
+            </div>
+            <div>
+                <div class="comment-failed d-inline" *ngIf='this.isError'>
+                    <p class="comment-failed-text d-inline ml-2 mb-0">Tu comentario está vacío.</p>   
+                </div>
+                <button type="submit" class="login float-right d-inline">Comment</button>
+            </div>
+        </form>
     </div>
 </div>
