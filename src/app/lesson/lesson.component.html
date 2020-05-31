@@ -7,7 +7,8 @@
                         <a class="lesson-name" [routerLink]="['/course']" [queryParams]="{id: lesson$.courseId}"><< Regresar</a>
                     </div>
                     <h2>{{lesson$.lessonName}}</h2>
-                    <p>{{lesson$.content}}</p>
+                    <div [innerHTML]="lesson$.content"></div>
+                    <img class="mx-auto d-block m-3" *ngIf="lesson$.imageUrl !== undefined || lesson$.imageUrl !== null" [src]="lesson$.imageUrl" alt="">
                     <p>Fecha de creación: {{lesson$.createdDate | date: 'medium'}}</p>
                 </div>
                 <hr/>
@@ -33,7 +34,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <app-lesson-sidebar></app-lesson-sidebar>
+            </div>
         </div>
     </div>
 </div>

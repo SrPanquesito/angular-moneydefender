@@ -5,7 +5,7 @@ import { LoginResponse } from '../login/login-response-payload';
 import { LoginRequestPayload } from '../login/login-request-payload';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Observable, throwError } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, finalize } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 @Injectable({

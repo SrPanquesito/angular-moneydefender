@@ -20,7 +20,7 @@ import { ToastrService } from 'ngx-toastr';
     trigger('openClose', [
       // ...
       state('open', style({
-        height: '200px',
+        height: 'auto',
         opacity: 1
       })),
       state('closed', style({
@@ -52,13 +52,15 @@ export class LessonComponent implements OnInit {
     if(this.id !== undefined) {
       this.lessonService.getLesson(this.id).subscribe(lesson => {
         this.lesson$ = lesson;
-      });
-      this.lessonService.getQuestionaryByLessonId(this.id).subscribe(questionary => {
-        this.questionary$ = questionary;
-        var myStr = questionary.answers.replace(/'/g,'"');
-        var myArr = JSON.parse(myStr);
-        this.answers$ = myArr;
-        console.log(this.answers$);
+        if(this.lesson$.questionaryId !== undefined && this.lesson$.questionaryId !== null && this.lesson$.questionaryId !== 0) {
+          this.lessonService.getQuestionaryByLessonId(this.id).subscribe(questionary => {
+            this.questionary$ = questionary;
+            var myStr = questionary.answers.replace(/'/g,'"');
+            var myArr = JSON.parse(myStr);
+            this.answers$ = myArr;
+            console.log(this.answers$);
+          });
+        }
       });
     }
   }

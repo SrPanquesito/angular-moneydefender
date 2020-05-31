@@ -17,6 +17,7 @@ import { TokenInterceptor } from './token-interceptor';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CourseComponent } from './course/course.component';
 import { LessonComponent } from './lesson/lesson.component';
+import { LessonSidebarComponent } from './shared/lesson-sidebar/lesson-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { LessonComponent } from './lesson/lesson.component';
     LoginComponent,
     HomeComponent,
     CourseComponent,
-    LessonComponent
+    LessonComponent,
+    LessonSidebarComponent
   ],
   imports: [
     BrowserModule,

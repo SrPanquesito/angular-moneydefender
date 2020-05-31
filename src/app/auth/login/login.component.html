@@ -2,6 +2,15 @@
     <div class="row justify-content-center">
         <div class="col-md-3"></div>
         <div class="col-md-6">
+            <div id="overlay" *ngIf="loading">
+                <div id="overlay-text">
+                    <i>Cargando...</i>
+                    <div class="spinner-grow text-success" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <p>No se me desespere, esto puede demorar un tiempo.</p>
+                </div>
+            </div>
             <div class="card">
                 <div class="card-header" style="text-align: center"><h4>Inicia Sesión</h4></div>
                 <div class="card-body">

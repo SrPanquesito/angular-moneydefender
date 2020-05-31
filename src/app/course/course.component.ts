@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CourseService } from '../shared/course.service';
 import { CourseModel } from '../shared/course-model';
 import { LessonService } from '../shared/lesson.service';
@@ -17,7 +17,7 @@ export class CourseComponent implements OnInit {
   course$: CourseModel;
   lessons$: Array<LessonModel>;
 
-  constructor(private route: ActivatedRoute, private courseService: CourseService, private lessonService: LessonService) {
+  constructor(private route: ActivatedRoute, private courseService: CourseService, private lessonService: LessonService, private router: Router) {
     this.route.queryParams.subscribe(params => {
         this.id = params['id'];
     });
@@ -33,6 +33,10 @@ export class CourseComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  goToLesson(id) {
+    this.router.navigate(['/lesson'], { queryParams: { id: id } });
   }
 
 }

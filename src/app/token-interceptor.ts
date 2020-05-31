@@ -19,18 +19,24 @@ export class TokenInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
         // Agrega el JWT a los Headers y continua con el request
-        if (this.authService.getJwtToken()) {
-            this.addToken(req, this.authService.getJwtToken());
+        // Verifica que el request no venga de la pagina refresh o login ya que pueden ocurrir errores
+        if (req.url.indexOf('refresh') !== -1 || req.url.indexOf('login') !== -1) {
+            return next.handle(req);
         }
-        
-        // En caso de que el request arroje un error de Unauthorized (403), mandaremos a refrescar JWT.
-        return next.handle(req).pipe(catchError(error => {
-            if (error instanceof HttpErrorResponse && error.status === 403) {
-                return this.handleAuthErrors(req, next);
-            } else {
-                return throwError(error);
-            }
-        }));
+        const jwtToken = this.authService.getJwtToken();
+
+        // Si existe tal token entonces el usuario esta activo en la pagina y necesitamos refrescar su token para que continue navegando
+        if (jwtToken) {
+            return next.handle(this.addToken(req, jwtToken)).pipe(catchError(error => {
+                if (error instanceof HttpErrorResponse
+                    && error.status === 403) {
+                    return this.handleAuthErrors(req, next);
+                } else {
+                    return throwError(error);
+                }
+            }));
+        }
+        return next.handle(req);
     }
     private handleAuthErrors(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
         if (!this.isTokenRefreshing) {

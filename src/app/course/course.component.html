@@ -10,7 +10,7 @@
                 <br/>
                 <h5><i>Lecciones:</i></h5>
                 <!-- Display each lesson of the course -->
-                <div class="row lesson" *ngFor="let lesson of lessons$; let i = index">
+                <div class="row lesson btn btn-light btn-block text-left" *ngFor="let lesson of lessons$; let i = index" (click)="goToLesson(lesson.lessonId)">
                     <div class="col-md-12">
                         <div class="lesson-title">
                         <a class="lesson-name" [routerLink]="['/lesson']" [queryParams]="{id: lesson.lessonId}">{{i+1}}. {{lesson.lessonName}}</a>

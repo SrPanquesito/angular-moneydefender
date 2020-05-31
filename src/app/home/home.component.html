@@ -18,9 +18,9 @@
             </div>
           </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-12 mt-4">
           <!-- Display Courses-->
-          <div class="row course" *ngFor="let course of courses$">
+          <div class="row course btn btn-light" *ngFor="let course of courses$" (click)="goToCourse(course.courseId)">
             <div class="col-md-12">
               <div class="course-title">
                 <a class="coursename" [routerLink]="['/course']" [queryParams]="{id: course.courseId}">{{course.courseName}}</a>
@@ -34,8 +34,6 @@
               </span>
             </div>
           </div>
-        </div>
-        <div class="col-md-3">
         </div>
       </div>
     </div>

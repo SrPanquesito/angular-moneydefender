@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   loginRequestPayload: LoginRequestPayload;
   registerSuccessMessage: string;
   isError: boolean;
+  loading: boolean;
 
   constructor(private authService : AuthService, private activatedRoute: ActivatedRoute, private router: Router, private toastr: ToastrService) {
     this.loginRequestPayload = {
@@ -44,6 +45,8 @@ export class LoginComponent implements OnInit {
   login() {
     this.loginRequestPayload.username = this.loginForm.get('username_l').value;
     this.loginRequestPayload.password = this.loginForm.get('password_l').value;
+    this.loading = true;
+    console.log("Before request");
 
     this.authService.login(this.loginRequestPayload).subscribe(data => {
       this.isError = false;
@@ -52,6 +55,9 @@ export class LoginComponent implements OnInit {
     }, error => {
       this.isError = true;
       throwError(error);
+    }).add(() => {
+      this.loading = false;
+      console.log("After request");
     });
   }
 
