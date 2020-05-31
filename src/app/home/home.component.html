@@ -11,8 +11,11 @@
               <div style="margin-top: 4rem;">
                 <h1>Bienvenido de vuelta {{user}}!</h1>
                 <h4>Tienes nuevos cursos disponibles ↓</h4>
+              </div>
+              <div class="mt-4">
+                <i>Tú progreso</i>
                 <div  style="width: 70%;" class="progress">
-                  <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar" role="progressbar" [ngStyle]="{'width': this.progress + '%'}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{this.progress}}%</div>
                 </div>
               </div>
             </div>

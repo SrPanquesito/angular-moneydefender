@@ -11,6 +11,8 @@ import {
   transition
 } from '@angular/animations';
 import { ToastrService } from 'ngx-toastr';
+import { CorrectAnswersModel } from '../shared/correct-answers.model';
+import { AuthService } from '../auth/shared/auth.service';
 
 @Component({
   selector: 'app-lesson',
@@ -40,11 +42,19 @@ export class LessonComponent implements OnInit {
   id: Number;
   lesson$: LessonModel;
   questionary$: QuestionaryModel;
+  correctAnswer$: CorrectAnswersModel;
   isOpen = false;
   answers$: any;
   radioSelected: any;
+  answerSaved: boolean;
 
-  constructor(private route: ActivatedRoute, private lessonService: LessonService, private toastr: ToastrService) {
+  constructor(private route: ActivatedRoute, private lessonService: LessonService, private toastr: ToastrService, private authService: AuthService) {
+    this.correctAnswer$ = {
+      id: null,
+      userId: null,
+      questionaryId: null
+    };
+
     this.route.queryParams.subscribe(params => {
         this.id = params['id'];
     });
@@ -62,6 +72,7 @@ export class LessonComponent implements OnInit {
         }
       });
     }
+
   }
 
   ngOnInit(): void {
@@ -74,6 +85,28 @@ export class LessonComponent implements OnInit {
   submitAnswer() {
     if(+this.radioSelected === this.questionary$.correctAnswer) {
         this.toastr.success('Respuesta Correcta!');
+        this.correctAnswer$.questionaryId = this.questionary$.questionaryId;
+
+        let postAnswer: boolean = true;
+
+        this.lessonService.getCorrectAnswersByUser(this.authService.getUserName()).subscribe(data => {
+          data.forEach(answer => {
+            if(answer.questionaryId === this.lesson$.questionaryId) {
+              postAnswer = false;
+            }
+          });
+
+          if (postAnswer) {
+            this.lessonService.postCorrectAnswer(this.correctAnswer$).subscribe(data => {
+              this.answerSaved = true;
+            }, err => {
+              console.log(err);
+            });
+          }
+        }, err => {
+          console.log(err);
+        });
+
     } else {
         this.toastr.error('Respuesta incorrecta...');
     }

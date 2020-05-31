@@ -28,6 +28,9 @@
                                         </label>
                                     </div>
                                     <button (click)="submitAnswer()" type="button" class="btn btn-success float-right">Aceptar</button>
+                                    <div class="correct-answer" *ngIf='this.answerSaved'>
+                                        <p class="correct-answer-text text-success m-0 pt-4">Respuesta grabada con éxito.</p>   
+                                    </div>
                                 </div>
                             </div>
                         </div>
